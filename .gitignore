@@ -1,2 +1,3 @@
-ve/
+src/*/__pycache__
+/ve
 *nbproject*
