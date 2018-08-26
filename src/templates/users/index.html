@@ -30,7 +30,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        {% for user in users %}
+                        <tr data-ondblclick="#">
+                            <td>{{ user }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role.name }}</td>
+                            <td class="text-center" width="40">
+                                <a href="#" class="action-btn" title="Editar">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td class="text-center" width="40">
+                                <button type="button" class="table-btn-destroy action-btn" data-form-target="#form-user"
+                                        data-form-method="DELETE" data-form-action="#" title="Borrar">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </form>
