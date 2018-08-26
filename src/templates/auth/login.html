@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="login-box">
+                    <div class="login-logo">
+                        <b>ACS</b>
+                    </div>
+                    <!-- /.login-logo -->
+                    <div class="login-box-body">
+                        <p class="login-box-msg">Iniciar sesión</p>
+
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <input id="timezone" type="hidden" name="timezone">
+                            <div class="form-group has-feedback">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                <span class="help-block">
+                                    <strong></strong>
+                                </span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                <span class="help-block">
+                                    <strong></strong>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" class="icheck"> Recordarme
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-xs-4">
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </form>
+
+                        <a href="#">Olvidé mi contraseña</a><br>
+                    </div>
+                    <!-- /.login-box-body -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
