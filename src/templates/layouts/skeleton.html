@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="DATAR">
+        <meta name="author" content="Copyleft">
+        <meta name="csrf-token" content="{% csrf_token %}">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="keywords" content="Experiencia, Experiencia Puerto Escondido, Spanish, Surf, Housing">
+        <title>
+            {% block title %}ACS{% endblock %}
+        </title>
+
+        <!-- Favicons-->
+        <link rel="icon" href="#" sizes="32x32">
+        <!-- Favicons-->
+        <link rel="apple-touch-icon-precomposed" href="#">
+        <!-- For iPhone -->
+        <meta name="msapplication-TileColor" content="#00bcd4">
+        <meta name="msapplication-TileImage" content="#">
+        <!-- For Windows Phone -->
+        {% block styles %}{% endblock %}
+    </head>
+    <body class="sidebar-mini skin-blue fixed">
+        {% block container %}{% endblock %}
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

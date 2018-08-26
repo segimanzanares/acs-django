@@ -1,0 +1,98 @@
+{% extends 'layouts/skeleton.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/app.css' %}">
+{% endblock %}
+
+{% block container %}
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>ACS</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <!--<img class="img-responsive center-block" src="#" alt="Logo Datar">-->
+                    Brigadier
+                </span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!--<div class="navbar-header pull-left">
+                    <span class="navbar-brand">
+                       @yield('section-title')
+                    </span>
+                </div>-->
+                <div class="navbar-header pull-left">
+                    
+                </div>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">No tienes notificaciones nuevas</li>
+                                <li>
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-warning text-yellow"></i> Title
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!--<li class="footer"><a href="#">View all</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span>Bienvenido </span>
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu" style="padding-top: 0;">
+                                <li class="user-footer">
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-default btn-flat"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="box-shadow: none !important;">
+                                            Cerrar sesión
+                                        </a>
+                                        <form id="logout-form" action="#" method="POST" style="display: none;">
+                                            {% csrf_token %}
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                {% include 'layouts/sidebar-menu.html' %}
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <div class="flash-message"></div>
+            <section class="content-header">
+                {% block content-header %}{% endblock %}
+            </section>
+            <section class="content">
+                {% block content %}{% endblock %}
+            </section>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+</script>
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}
