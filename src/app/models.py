@@ -6,6 +6,9 @@ class Role(models.Model):
     created_at = models.DateTimeField(auto_now=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
     deleted_at = models.DateTimeField(auto_now=False, null=True)
+    
+    def __str__(self):
+        return self.name
 
 class User(models.Model):
     id = models.AutoField(primary_key=True)
@@ -14,7 +17,10 @@ class User(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    remember_token = models.CharField(max_length=255)
+    remember_token = models.CharField(max_length=255, null=True)
     created_at = models.DateTimeField(auto_now=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
     deleted_at = models.DateTimeField(auto_now=False, null=True)
+    
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
