@@ -60,11 +60,11 @@
                                 <ul class="dropdown-menu" style="padding-top: 0;">
                                     <li class="user-footer">
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-default btn-flat"
+                                            <a href="/admin/logout/" class="btn btn-default btn-flat"
                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="box-shadow: none !important;">
                                                 Cerrar sesión
                                             </a>
-                                            <form id="logout-form" action="#" method="POST" style="display: none;">
+                                            <form id="logout-form" action="/admin/logout/" method="POST" style="display: none;">
                                                 {% csrf_token %}
                                             </form>
                                         </div>

@@ -24,6 +24,10 @@ def login(request):
         else:
             return redirect(reverse('login'))
 
+def logout(request):
+    auth_logout(request)
+    return redirect(reverse('login'))
+
 @login_required
 @require_http_methods(["GET"])
 def users_index(request):
