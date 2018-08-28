@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="DATAR">
+        <meta name="description" content="ACS">
         <meta name="author" content="Copyleft">
-        <meta name="csrf-token" content="{% csrf_token %}">
+        <meta name="csrf-token" content="{{ csrf_token }}">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="msapplication-tap-highlight" content="no">
-        <meta name="keywords" content="Experiencia, Experiencia Puerto Escondido, Spanish, Surf, Housing">
+        <meta name="keywords" content="Asi como suena, ACS">
         <title>
             {% block title %}ACS{% endblock %}
         </title>
@@ -24,7 +24,7 @@
         <!-- For Windows Phone -->
         {% block styles %}{% endblock %}
     </head>
-    <body class="sidebar-mini skin-blue fixed">
+    <body class="sidebar-mini skin-blue fixed {% if request.resolver_match.url_name == 'login' %} login-page {% endif %}">
         {% block container %}{% endblock %}
         {% block scripts %}{% endblock %}
     </body>
