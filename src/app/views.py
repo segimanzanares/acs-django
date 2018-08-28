@@ -7,6 +7,7 @@ from app.models import User
 def login(request):
     return render(request, 'auth/login.html')
 
+@login_required
 @require_http_methods(["GET"])
 def users_index(request):
     users = User.objects.all()[:20]
