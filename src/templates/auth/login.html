@@ -19,7 +19,7 @@
                 <div class="login-box-body">
                     <p class="login-box-msg">Iniciar sesión</p>
 
-                    <form action="#" method="POST">
+                    <form action="{% url 'login' %}" method="POST">
                         {% csrf_token %}
                         <input id="timezone" type="hidden" name="timezone">
                         <div class="form-group has-feedback">
