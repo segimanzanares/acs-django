@@ -16,6 +16,7 @@ mix.options({
 });
 
 mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
+mix.copy('node_modules/bootstrap/fonts', 'public/fonts');
 mix.copy('node_modules/adminlte/dist/img', 'public/img');
 
 mix.js('assets/js/app.js', 'public/js')
