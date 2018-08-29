@@ -130,3 +130,9 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = '/admin/login/'
+
+GLOBAL_SETTINGS = {
+    'FORM_CREATE': 0,
+    'FORM_EDIT': 1,
+    'FORM_SHOW': 2,
+}
