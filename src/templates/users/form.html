@@ -1,0 +1,79 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %}
+    Usuarios
+{% endblock %}
+
+{% block content-header %}
+    <h1>Usuarios</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <form action="#" method="POST" enctype="multipart/form-data" class="schmal">
+            {% csrf_token %}
+            <div class="box-header">
+                <h3 class="box-title">
+                    {% if form_type == FORM_CREATE %}
+                        Agregar nuevo usuario
+                    {% elif form_type == FORM_EDIT %}
+                        Editar usuario
+                    {% elif form_type == FORM_SHOW %}
+                        Ver usuario
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="role_id" class="control-label">Rol</label>
+                    <select class="form-control" name="role_id" id="role_id">
+                        {% for role in roles %}
+                            <option value="{{ role.id }}" data-slug="{{ role.slug }}">{{ role.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="first_name" class="control-label">Nombre</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name"
+                           value="" required {{ readonly }}>
+                </div>
+                <div class="form-group">
+                    <label for="last_name" class="control-label">Apellidos</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name"
+                           value="" required {{ readonly }}>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="control-label">E-mail</label>
+                    <input type="email" class="form-control" name="email" id="email"
+                           value="" required {{ readonly }}>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">Contraseña</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                           {{ readonly  }}>
+                </div>
+                <div class="form-group">
+                    <label for="password-confirm" class="control-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control" name="password_confirmation" id="password-confirm" {% if form_type == FORM_CREATE %} 'required' {% endif %}
+                           {{ readonly }}>
+                </div>
+            </div>
+            {% if form_type != FORM_SHOW %}
+            <div class="box-footer">
+                <button type="submit" class="btn button btn-primary">
+                {% if form_type == FORM_EDIT %} Actualizar {% else %} Crear {% endif %}
+                </button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+    $(function() {
+        
+    });
+</script>
+{% endblock %}
