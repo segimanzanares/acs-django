@@ -55,14 +55,20 @@ def users_create(request):
         'roles': Role.objects.all()
     }
     context.update(settings.GLOBAL_SETTINGS)
-    form = UserForm()
     if request.method == 'GET':
+        form = UserForm()
         context.update({'form': form})
         return render(request, 'users/form.html', context)
     else:
         form = UserForm(request.POST)
         if form.is_valid():
-            print("Data is valid")
+            new_user = User()
+            new_user.first_name = form.cleaned_data.get('first_name')
+            new_user.last_name = form.cleaned_data.get('last_name')
+            new_user.email = form.cleaned_data.get('email')
+            new_user.password = form.cleaned_data.get('password')
+            new_user.role = form.cleaned_data.get('role')
+            new_user.save()
             return redirect(reverse('users.index'))
         else:
             context.update({'form': form})
