@@ -10,7 +10,7 @@
 
 {% block content %}
     <div class="box">
-        <form action="#" method="POST" enctype="multipart/form-data" class="schmal">
+        <form action="{% url 'users.create' %}" method="POST" enctype="multipart/form-data" class="schmal">
             {% csrf_token %}
             <div class="box-header">
                 <h3 class="box-title">
@@ -24,33 +24,64 @@
                 </h3>
             </div>
             <div class="box-body">
-                <div class="form-group">
-                    <label for="role_id" class="control-label">Rol</label>
-                    <select class="form-control" name="role_id" id="role_id">
+                <div class="form-group {% if form.role.errors %} has-error {% endif %}">
+                    <label for="role" class="control-label">Rol</label>
+                    <select class="form-control" name="role" id="role">
                         {% for role in roles %}
                             <option value="{{ role.id }}" data-slug="{{ role.slug }}">{{ role.name }}</option>
                         {% endfor %}
                     </select>
+                    {% if form.role.errors %}
+                        <span class="help-block">
+                            {% for error in form.email.errors %}
+                                <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                        </span>
+                    {% endif %}
                 </div>
-                <div class="form-group">
+                <div class="form-group {% if form.first_name.errors %} has-error {% endif %}">
                     <label for="first_name" class="control-label">Nombre</label>
                     <input type="text" class="form-control" name="first_name" id="first_name"
                            value="" required {{ readonly }}>
+                    {% if form.first_name.errors %}
+                        <span class="help-block">
+                            {% for error in form.first_name.errors %}
+                                <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                        </span>
+                    {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="last_name" class="control-label">Apellidos</label>
                     <input type="text" class="form-control" name="last_name" id="last_name"
                            value="" required {{ readonly }}>
                 </div>
-                <div class="form-group">
+                <div class="form-group {% if form.email.errors %} has-error {% endif %}">
                     <label for="email" class="control-label">E-mail</label>
                     <input type="email" class="form-control" name="email" id="email"
                            value="" required {{ readonly }}>
+                    {% if form.email.errors %}
+                        <span class="help-block">
+                            {% for error in form.email.errors %}
+                                <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                        </span>
+                    {% endif %}
                 </div>
-                <div class="form-group">
+                <div class="form-group {% if form.password.errors  or form.password_confirmation.errors%} has-error {% endif %}">
                     <label for="password" class="control-label">Contraseña</label>
                     <input type="password" class="form-control" name="password" id="password"
                            {{ readonly  }}>
+                    {% if form.password.errors or form.password_confirmation.errors %}
+                        <span class="help-block">
+                            {% for error in form.password.errors %}
+                                <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                            {% for error in form.password_confirmation.errors %}
+                                <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                        </span>
+                    {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="password-confirm" class="control-label">Confirmar contraseña</label>

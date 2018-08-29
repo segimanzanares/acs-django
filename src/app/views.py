@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 from app.models import User
 from app.models import Role
+from app.forms import UserForm
 
 @require_http_methods(["GET", "POST"])
 def login(request):
@@ -38,7 +39,7 @@ def users_index(request):
     return render(request, 'users/index.html', context)
 
 @login_required
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "POST"])
 def users_create(request):
     from django.conf import settings
     form_type = settings.GLOBAL_SETTINGS['FORM_CREATE']
@@ -54,4 +55,15 @@ def users_create(request):
         'roles': Role.objects.all()
     }
     context.update(settings.GLOBAL_SETTINGS)
-    return render(request, 'users/form.html', context)
+    form = UserForm()
+    if request.method == 'GET':
+        context.update({'form': form})
+        return render(request, 'users/form.html', context)
+    else:
+        form = UserForm(request.POST)
+        if form.is_valid():
+            print("Data is valid")
+            return redirect(reverse('users.index'))
+        else:
+            context.update({'form': form})
+            return render(request, 'users/form.html', context)

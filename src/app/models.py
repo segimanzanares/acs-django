@@ -15,7 +15,7 @@ class User(models.Model):
     role = models.ForeignKey(Role, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
     remember_token = models.CharField(max_length=255, null=True)
     last_login = models.DateTimeField(auto_now=False, null=True)
