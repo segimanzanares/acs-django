@@ -17,10 +17,12 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         user = authenticate(request, email=email, password=password)
+        next = request.POST['_next']
+        print(next)
         if user is not None:
             auth_login(request, user)
-            if request.GET.get('next') != None:
-                return redirect(request.GET.get('next'))
+            if next != '':
+                return redirect(next)
             return redirect(reverse('users.index'))
         else:
             return redirect(reverse('login'))

@@ -21,6 +21,7 @@
 
                     <form action="{% url 'login' %}" method="POST">
                         {% csrf_token %}
+                        <input type="hidden" name="_next" value="{{ request.GET.next }}">
                         <input id="timezone" type="hidden" name="timezone">
                         <div class="form-group has-feedback">
                             <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
